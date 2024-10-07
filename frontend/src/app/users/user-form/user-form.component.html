@@ -1,0 +1,74 @@
+<div class="shadow border p-4">
+    <!-- Conditional Heading based on the URL -->
+    <h2 class="text-xl font-semibold" *ngIf="editUserId">Update Customer</h2>
+    <h2 class="text-xl font-semibold" *ngIf="!editUserId && isAdd">Add Customer</h2>
+    <h2 class="text-xl font-semibold" *ngIf="isSignup">Sign Up</h2>
+
+    <form [formGroup]="userForm">
+        <div class="flex flex-wrap">
+            <!-- First Name -->
+            <mat-form-field class="w-full">
+                <mat-label>First Name</mat-label>
+                <input type="text" matInput formControlName="firstName" />
+            </mat-form-field>
+
+            <!-- Last Name -->
+            <mat-form-field class="w-full">
+                <mat-label>Last Name</mat-label>
+                <input type="text" matInput formControlName="lastName" />
+            </mat-form-field>
+
+            <!-- E-mail -->
+            @if (url === '/users/signup' || url === '/users/add') {
+            <mat-form-field class="w-full">
+                <mat-label>E-mail</mat-label>
+                <input type="email" matInput formControlName="email" />
+            </mat-form-field>}
+
+            <!-- Password -->
+             @if (url === '/users/signup' || url === '/users/add') {
+                <mat-form-field class="w-full">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password" />
+                </mat-form-field>}
+
+            <!-- Phone Number -->
+            <mat-form-field class="w-full">
+                <mat-label>Phone Number</mat-label>
+                <input type="text" matInput formControlName="phoneNumber" />
+            </mat-form-field>
+
+            <!-- Address -->
+            @if (url === '/users/signup' || url === '/users/add') {
+            <mat-form-field class="w-full">
+                <mat-label>Address</mat-label>
+                <input type="text" matInput formControlName="address" />
+            </mat-form-field>
+
+            <!-- City -->
+            <mat-form-field class="w-full">
+                <mat-label>City</mat-label>
+                <input type="text" matInput formControlName="city" />
+            </mat-form-field>
+
+            <!-- State -->
+            <mat-form-field class="w-full">
+                <mat-label>State</mat-label>
+                <input type="text" matInput formControlName="state" />
+            </mat-form-field>
+
+            <!-- Pin Code -->
+            <mat-form-field class="w-full">
+                <mat-label>Pin Code</mat-label>
+                <input type="text" matInput formControlName="pincode" />
+            </mat-form-field>}
+        </div>
+
+        <div class="flex justify-center">
+            <!-- Conditionally render buttons based on the URL -->
+            <button mat-raised-button color="primary" *ngIf="editUserId" (click)="updateUser()">Update</button>
+            <button mat-raised-button color="primary" *ngIf="!editUserId && isAdd" (click)="addUser()">Add</button>
+            <button mat-raised-button color="primary" *ngIf="isSignup" (click)="signup()">Sign Up</button>
+        </div>
+    </form>
+</div>

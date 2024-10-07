@@ -1,0 +1,32 @@
+<div class="shadow p-4 border">
+    <div class="flex justify-between p-4"> 
+    <h2 class="text-xl font-semibold">Customer Details</h2>
+      <button mat-raised-button color="primary" [routerLink]="'/address/' + user?.id">View All Addresses</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Phone Number</td>
+                <td>E - mail ID</td>
+                <td>Address</td>
+                <td>City</td>
+                <td>State</td>
+                <td>Pin Code</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="user">
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.phoneNumber}}</td>
+                <td>{{user.email}}</td>
+                <td *ngIf="address">{{address.address}}</td>
+                <td *ngIf="address">{{address.city}}</td>
+                <td *ngIf="address">{{address.state}}</td>
+                <td *ngIf="address">{{address.pincode}}</td>
+              </tr>
+        </tbody>
+    </table>
+</div>

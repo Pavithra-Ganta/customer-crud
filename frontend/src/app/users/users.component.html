@@ -1,0 +1,58 @@
+<div class="shadow p-4 border">
+    <div class="flex justify-between p-4">
+      <h2 class="text-xl font-semibold">Customer Data</h2>
+      <div>
+        <button mat-raised-button color="primary" routerLink="/users/add">Add Customer</button>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="filterOneAddress()">
+            <span>One Address</span>
+          </button>
+          <button mat-menu-item (click)="filterMultipleAddresses()">
+            <span>Multiple Addresses</span>
+          </button>
+          <button mat-menu-item (click)="showAllUsers()">
+            <span>All Users</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+    <div class="p-4">
+      <form [formGroup]="searchForm">
+        <mat-form-field appearance="outline" class="search-form-field">
+          <input matInput type="text" placeholder="Search" formControlName="search" (input)="search()" />
+          <button mat-icon-button matSuffix aria-label="Search">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </form>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers; trackBy: trackByFn" 
+            [ngClass]="{'highlight-row': query!='' }">
+          <ng-container *ngIf="user.category !== 'a'">
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>
+                <div class="button-group">
+                  <button mat-raised-button class="custom-primary-btn" [routerLink]="'/users/show/' + user.id">View Details</button>
+                  <button mat-raised-button class="custom-accent-btn" [routerLink]="'/users/' + user.id">Update Customer</button>
+                  <button mat-raised-button class="custom-warn-btn" (click)="delete(user.id!)">Delete Customer</button>
+                </div>
+              </td>              
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

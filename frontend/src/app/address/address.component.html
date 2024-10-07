@@ -1,0 +1,65 @@
+<!-- Existing HTML -->
+<div class="shadow p-4 border">
+    <div class="flex justify-between p-4">
+      <h2 class="text-xl font-semibold">Customer Addresses</h2>
+      <button mat-raised-button color="primary" (click)="openAddAddressDialog()">Add Address</button>
+          </div>
+  
+    <table>
+      <tbody>
+        <tr *ngFor="let address of addresses" [ngClass]="{'highlight-row': address.isDefault}">
+          <td style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <span style="flex-grow: 1; width: 80%;">{{address.address}}, {{address.city}}, {{address.state}}, {{address.pincode}}</span>
+            @if (!address.isDefault) {
+                <button mat-mini-fab aria-label="Example icon button with a menu icon" style="background-color: transparent; box-shadow: none;" (click)="setDefaultAddress(address.id.toString())">
+                  <mat-icon>bubble_chart</mat-icon>
+                </button>}
+            <button mat-mini-fab aria-label="Example icon button with a menu icon" style="background-color: transparent; box-shadow: none;" (click)="openAddAddressDialog(address)">
+                <mat-icon>create</mat-icon>
+              </button>
+              <button mat-mini-fab aria-label="Example icon button with a menu icon" style="background-color: transparent; box-shadow: none;" (click)="deleteAddress(address.id!)">
+                <mat-icon>delete</mat-icon>
+              </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Dialog Template -->
+  <ng-template #addAddressDialog>
+    <h2 mat-dialog-title>Add New Address</h2>
+    <form [formGroup]="addressForm">
+        <div class="flex flex-wrap">
+            <mat-dialog-content>
+            <mat-form-field class="w-full">
+            <mat-label>Address</mat-label>
+            <input type="text" matInput formControlName="address" />
+            </mat-form-field>
+
+        <!-- City -->
+            <mat-form-field class="w-full">
+                <mat-label>City</mat-label>
+                <input type="text" matInput formControlName="city" />
+            </mat-form-field>
+
+            <!-- State -->
+            <mat-form-field class="w-full">
+                <mat-label>State</mat-label>
+                <input type="text" matInput formControlName="state" />
+            </mat-form-field>
+
+            <!-- Pin Code -->
+            <mat-form-field class="w-full" >
+                <mat-label>Pin Code</mat-label>
+                <input type="text" matInput formControlName="pincode" />
+            </mat-form-field>
+    </mat-dialog-content>
+</div>
+</form>
+    <mat-dialog-actions align="end">
+      <button mat-button (click)="closeDialog()">Cancel</button>
+      <button mat-button color="primary" (click)="saveAddress()">Save</button>
+    </mat-dialog-actions>
+  </ng-template>
+  

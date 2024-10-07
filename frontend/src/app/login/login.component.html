@@ -1,0 +1,31 @@
+<div class="shadow border p-4 ">
+    <h2>Login</h2>
+    <div class="mb-4">
+      <mat-radio-group [(ngModel)]="favoriteSeason" aria-label="Select an option">
+        <mat-radio-button [value]="'1'">Customer</mat-radio-button>
+        <mat-radio-button [value]="'2'">Administrator</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  
+    <form [formGroup]="userFor" (ngSubmit)="onSubmit()">
+      <div class="flex flex-wrap">
+        <mat-form-field class="w-full">
+          <mat-label>e-Mail</mat-label>
+          <input type="email" matInput formControlName="email" />
+        </mat-form-field>
+        
+        <mat-form-field class="w-full">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" />
+        </mat-form-field>
+      </div>
+      <div class="flex justify-center">
+        <button mat-raised-button color="primary" type="submit">Login</button>
+      </div>
+  
+      <div *ngIf="favoriteSeason === '1'">
+        <p>New User? <a class="link" routerLink="/users/signup">Sign Up!</a></p>
+      </div>
+    </form>
+  </div>
+  

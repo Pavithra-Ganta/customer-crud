@@ -1,0 +1,46 @@
+table{
+    width: 100%;
+    tr{
+        width: 100%;
+    }
+    th,td{
+        padding: 1rem;
+        border: 1px solid grey;
+    }
+}
+.highlight-row {
+    background-color: rgb(255, 255, 218);
+    font-weight: bold;
+  }
+  .search-form-field .mat-form-field-outline-start,
+  .search-form-field .mat-form-field-outline-end {
+    border: none !important; /* Remove the vertical line */
+  }
+  
+  .search-form-field {
+    width: 100%; /* Adjust width as needed */
+  }
+  .custom-primary-btn {
+    background-color: #f8dcf2 !important; 
+  }
+  
+  .custom-accent-btn {
+    background-color: #cef1cc !important;
+  }
+  
+  .custom-warn-btn {
+    background-color: #c7e9f8 !important;
+  }
+  .button-group {
+    display: flex;
+    margin-left: 11px;margin-right: 11px;
+    justify-content: space-between; /* Even spacing between the buttons */
+    gap: 50px; /* Add a consistent gap between buttons if needed */
+  }
+  
+  button {
+    flex: 1; /* Ensures buttons take up equal space */
+  }
+  
+  
+  
